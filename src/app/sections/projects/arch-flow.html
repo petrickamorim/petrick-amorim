@@ -1,0 +1,8 @@
+<div class="rail"></div>
+@for (n of nodes(); track $index) {
+  <div #node class="node" [class.hit]="hits().includes($index)">
+    <div class="b">{{ n.icon }}</div>
+    {{ lang.t(n.label) }}
+  </div>
+}
+<div #pkt class="pkt"></div>
