@@ -1,0 +1,60 @@
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 14vh 6vw 8vh;
+}
+.reveal {
+  font: 800 clamp(52px, 11vw, 170px) Inter, system-ui, sans-serif;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+  color: transparent;
+  -webkit-text-stroke: 1px #333;
+  background: linear-gradient(90deg, #fff 0 50%, transparent 50% 100%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.csub { color: var(--mut); font-size: 16px; margin-top: 4vh; max-width: 520px; line-height: 1.6; }
+.mail {
+  margin-top: 5vh;
+  font: 500 clamp(15px, 2vw, 22px) var(--mono);
+  text-decoration: none;
+  border-bottom: 1px solid var(--purple);
+  padding-bottom: 6px;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: color 0.25s;
+  &:hover { color: var(--purple); }
+}
+.cp { font-size: 11px; color: #555; border: 1px solid #2a2a2a; border-radius: 6px; padding: 2px 7px; }
+.copied {
+  position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+  font: 11px var(--mono); color: var(--green); opacity: 0; transition: opacity 0.3s; white-space: nowrap;
+  &.on { opacity: 1; }
+}
+.socials { display: flex; gap: 14px; margin-top: 6vh; flex-wrap: wrap; justify-content: center; }
+.socials a {
+  display: flex; align-items: center; gap: 10px;
+  font: 12px var(--mono); color: #bbb; text-decoration: none;
+  border: 1px solid #242424; border-radius: 30px; padding: 10px 16px;
+  transition: color 0.25s, border-color 0.25s, box-shadow 0.25s;
+  &:hover { color: #fff; border-color: var(--purple); box-shadow: 0 0 22px rgba(168, 85, 247, 0.35); }
+  svg { width: 16px; height: 16px; fill: currentColor; }
+}
+.avail { margin-top: 5vh; font: 12px var(--mono); color: var(--mut); display: flex; gap: 10px; align-items: center; }
+.avail i {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green);
+  animation: pul 1.8s infinite;
+}
+@keyframes pul { 50% { opacity: 0.25; } }
