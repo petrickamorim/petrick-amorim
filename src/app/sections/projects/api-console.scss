@@ -1,0 +1,83 @@
+:host {
+  display: block;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  background: #0a0a0a;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+.creq {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: 1px solid #1d1d1d;
+  font: 12px var(--mono);
+}
+.m {
+  color: var(--purple);
+  font-weight: 700;
+}
+.u {
+  color: #ddd;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.send {
+  background: var(--purple);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font: 600 12px var(--mono);
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
+  white-space: nowrap;
+}
+.cbody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 200px;
+}
+.cbody > div {
+  padding: 12px 14px;
+  font: 12px/1.7 var(--mono);
+}
+.lbl {
+  font-size: 10px;
+  color: #555;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+.reqb {
+  color: #888;
+  white-space: pre;
+  overflow-x: auto;
+}
+.res {
+  border-left: 1px solid #1d1d1d;
+  white-space: pre;
+  color: #bbb;
+  overflow-x: auto;
+}
+.ok {
+  color: var(--green);
+}
+.d {
+  color: #555;
+}
+.head {
+  margin-bottom: 1.7em;
+}
+/* Side by side the response column is too narrow for the token lines until ~1100px. */
+@media (max-width: 1100px) {
+  .cbody {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .res {
+    border-left: 0;
+    border-top: 1px solid #1d1d1d;
+  }
+}

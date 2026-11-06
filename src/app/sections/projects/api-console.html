@@ -1,0 +1,21 @@
+<div class="creq">
+  <span class="m">{{ project().method }}</span>
+  <span class="u">{{ project().path }}</span>
+  <button class="send" type="button" (click)="onSend($event)">▶ <span>{{ lang.t(copy.send) }}</span></button>
+</div>
+<div class="cbody">
+  <div>
+    <div class="lbl">REQUEST BODY</div>
+    <div class="reqb">{{ project().requestBody || '—' }}</div>
+  </div>
+  <div class="res">
+    <div class="lbl">RESPONSE</div>
+    @if (status(); as s) {
+      <div class="head"><span class="ok">● {{ s.text }}</span>{{ ' ' }}<span class="d">· {{ s.ms }}ms</span></div>
+      <div class="body">{{ body() }}</div>
+    } @else {
+      <span class="d">…</span>
+    }
+  </div>
+</div>
+<app-arch-flow [nodes]="project().flow" />
