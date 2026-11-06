@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, afterNextRender, inject, signal } from '@angular/core';
 import { Lang } from '../../core/i18n/i18n.types';
 import { LangService } from '../../core/i18n/lang.service';
-import { ScrollTrigger, registerGsap } from '../../core/motion/motion';
+import { ScrollTrigger, refreshScroll, registerGsap } from '../../core/motion/motion';
 
 const SECTIONS = [
   { id: 'stack', label: '01' },
@@ -42,6 +42,7 @@ export class Nav {
           }),
         ),
       ];
+      refreshScroll();
       destroyRef.onDestroy(() => triggers.forEach((t) => t.kill()));
     });
   }

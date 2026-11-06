@@ -12,7 +12,7 @@ import {
 import { Container, tsParticles } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
 import { LangService } from '../../core/i18n/lang.service';
-import { ScrollTrigger, gsap, isMobile, prefersReducedMotion, registerGsap } from '../../core/motion/motion';
+import { ScrollTrigger, gsap, isMobile, prefersReducedMotion, refreshScroll, registerGsap } from '../../core/motion/motion';
 import { decodeInto } from '../../core/text/scramble';
 import { CONTACT } from '../../data/contact';
 import { COPY } from '../../data/copy';
@@ -70,11 +70,13 @@ export class Home {
       let tl: gsap.core.Timeline | undefined;
       if (!reduced) {
         tl = gsap
-          .timeline({ scrollTrigger: { trigger: host, start: 'top top', end: '+=100%', scrub: true, pin: true } })
+          .timeline({ scrollTrigger: { trigger: host, start: 'top top', end: '+=100%', scrub: true, pin: true, refreshPriority: 1 } })
           .to(warp, { speed: 0.05, ease: 'power2.in' }, 0)
           .to(host.querySelector('.hero'), { scale: 2.4, opacity: 0, filter: 'blur(8px)', ease: 'power2.in' }, 0)
           .to(host.querySelectorAll('.scrollhint, .hfoot'), { opacity: 0 }, 0);
       }
+
+      refreshScroll();
 
       destroyRef.onDestroy(() => {
         warp.stop();

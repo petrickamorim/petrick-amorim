@@ -17,3 +17,20 @@ export const MOBILE_MAX = 760;
 export const isMobile = () => innerWidth < MOBILE_MAX;
 
 export { gsap, ScrollTrigger };
+
+let refreshQueued = false;
+
+/**
+ * Re-sorts and refreshes every ScrollTrigger once per frame. Call it after creating
+ * triggers: sections render in any order, and pins (refreshPriority 1) must be
+ * measured before the triggers below them.
+ */
+export function refreshScroll(): void {
+  if (refreshQueued) return;
+  refreshQueued = true;
+  requestAnimationFrame(() => {
+    refreshQueued = false;
+    ScrollTrigger.sort();
+    ScrollTrigger.refresh();
+  });
+}
