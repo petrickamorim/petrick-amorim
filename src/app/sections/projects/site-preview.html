@@ -1,0 +1,13 @@
+<div class="creq">
+  <span class="stt"><i></i></span>
+  <span class="u">{{ project().url }}</span>
+  <a class="send" [href]="'https://' + project().url" target="_blank" rel="noopener">↗ <span>{{ lang.t(copy.visitSite) }}</span></a>
+</div>
+<div class="devices">
+  <div class="desk"><div class="scr"><img [src]="project().desktopImage" alt="" loading="lazy" decoding="async" /></div></div>
+  <div class="phone">
+    <div class="notch"></div>
+    <div class="scr"><img [src]="project().mobileImage" alt="" loading="lazy" decoding="async" /></div>
+  </div>
+</div>
+<app-arch-flow [nodes]="project().flow" />

@@ -1,0 +1,123 @@
+:host {
+  display: block;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  background: #0a0a0a;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+.creq {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: 1px solid #1d1d1d;
+  font: 12px var(--mono);
+}
+.stt {
+  display: flex;
+  align-items: center;
+}
+.stt i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pul 1.8s infinite;
+}
+@keyframes pul {
+  50% {
+    opacity: 0.25;
+  }
+}
+.u {
+  color: #ddd;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.send {
+  background: var(--purple);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font: 600 12px var(--mono);
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.devices {
+  position: relative;
+  height: 380px;
+  padding: 22px 22px 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 120%, rgba(168, 85, 247, 0.18), transparent 60%);
+}
+.desk {
+  position: absolute;
+  left: 22px;
+  right: 120px;
+  top: 22px;
+  bottom: 0;
+  border: 1px solid #2a2a2a;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  background: #111;
+}
+.scr {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+img {
+  width: 100%;
+  display: block;
+  filter: grayscale(1) brightness(0.8);
+}
+.phone {
+  position: absolute;
+  right: 22px;
+  bottom: -30px;
+  width: 170px;
+  height: 340px;
+  border: 1px solid #3a3a3a;
+  border-radius: 26px;
+  padding: 7px;
+  background: #050505;
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.8);
+}
+.phone .scr {
+  inset: 7px;
+  border-radius: 20px;
+}
+.notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 50px;
+  height: 12px;
+  margin-left: -25px;
+  border-radius: 10px;
+  background: #050505;
+  z-index: 3;
+}
+@media (max-width: 760px) {
+  .desk {
+    display: none;
+  }
+  .devices {
+    height: 430px;
+  }
+  .phone {
+    left: 50%;
+    right: auto;
+    width: 220px;
+    height: 440px;
+    margin-left: -110px;
+  }
+}
