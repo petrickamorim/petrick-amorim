@@ -74,6 +74,9 @@
   inset: 0;
   overflow: hidden;
 }
+picture {
+  display: contents;
+}
 img {
   width: 100%;
   display: block;

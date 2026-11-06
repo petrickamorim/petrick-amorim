@@ -4,10 +4,18 @@
   <a class="send" [href]="'https://' + project().url" target="_blank" rel="noopener">↗ <span>{{ lang.t(copy.visitSite) }}</span></a>
 </div>
 <div class="devices">
-  <div class="desk"><div class="scr"><img [src]="project().desktopImage" alt="" loading="lazy" decoding="async" /></div></div>
+  <div class="desk"><div class="scr"><picture>
+        <source type="image/avif" [srcset]="variant(project().desktopImage, 'avif')" />
+        <source type="image/webp" [srcset]="variant(project().desktopImage, 'webp')" />
+        <img [src]="project().desktopImage" alt="" loading="lazy" decoding="async" />
+      </picture></div></div>
   <div class="phone">
     <div class="notch"></div>
-    <div class="scr"><img [src]="project().mobileImage" alt="" loading="lazy" decoding="async" /></div>
+    <div class="scr"><picture>
+        <source type="image/avif" [srcset]="variant(project().mobileImage, 'avif')" />
+        <source type="image/webp" [srcset]="variant(project().mobileImage, 'webp')" />
+        <img [src]="project().mobileImage" alt="" loading="lazy" decoding="async" />
+      </picture></div>
   </div>
 </div>
 <app-arch-flow [nodes]="project().flow" />

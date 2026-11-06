@@ -16,6 +16,11 @@ export class SitePreview {
   protected readonly lang = inject(LangService);
   protected readonly copy = COPY;
   readonly project = input.required<SiteProject>();
+
+  /** Same screenshot in a lighter format; the JPEG stays as the fallback. */
+  protected variant(jpg: string, ext: 'avif' | 'webp'): string {
+    return jpg.replace(/\.jpe?g$/,`.${ext}`);
+  }
   private readonly flow = viewChild.required(ArchFlow);
 
   runFlow(): Promise<void> {
