@@ -25,3 +25,17 @@ body {
 a {
   color: inherit;
 }
+
+/* section header shared by Projects and Experience: title with a purple dot, mono hint below */
+.sh {
+  font: 800 clamp(46px, 6.5vw, 92px) var(--sans);
+  letter-spacing: -0.045em;
+}
+.sh .dot {
+  color: var(--purple);
+}
+.shs {
+  color: var(--mut);
+  font: 13px var(--mono);
+  margin: 10px 0 48px;
+}
