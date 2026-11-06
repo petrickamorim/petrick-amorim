@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, ElementRef, afterNextRender, effect, inject, viewChild } from '@angular/core';
+import { LangService } from './core/i18n/lang.service';
+import { LayoutWatch, watchLayout } from './core/motion/layout-watch';
 import { Nav } from './layout/nav/nav';
 import { Contact } from './sections/contact/contact';
 import { Experience } from './sections/experience/experience';
@@ -12,4 +14,20 @@ import { Stack } from './sections/stack/stack';
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
-export class App {}
+export class App {
+  private readonly main = viewChild.required<ElementRef<HTMLElement>>('main');
+
+  constructor() {
+    const lang = inject(LangService);
+    let watch: LayoutWatch | undefined;
+    afterNextRender(() => {
+      // Content below a growing panel or reflowed text moves: keep the triggers in step.
+      watch = watchLayout(this.main().nativeElement);
+    });
+    effect(() => {
+      lang.lang();
+      watch?.schedule();
+    });
+    inject(DestroyRef).onDestroy(() => watch?.stop());
+  }
+}
