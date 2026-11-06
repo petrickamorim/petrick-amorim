@@ -1,7 +1,7 @@
 <nav class="nav" [class.show]="showIndex()">
   <div class="idx">
     @for (s of sections; track s.id) {
-      <a role="button" tabindex="0" [class.on]="active() === s.id" (click)="go(s.id)" (keydown.enter)="go(s.id)">{{ s.label }}</a>
+      <a role="button" tabindex="0" [class.on]="active() === s.id" (click)="go(s.id)" (keydown.enter)="go(s.id)" (keydown.space)="$event.preventDefault(); go(s.id)">{{ s.label }}</a>
     }
   </div>
   <div class="lang">

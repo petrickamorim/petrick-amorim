@@ -42,4 +42,13 @@ test.describe('nav', () => {
       .poll(async () => page.evaluate(() => Math.abs(document.getElementById('stack')!.getBoundingClientRect().top)))
       .toBeLessThanOrEqual(2);
   });
+
+  test('index entries jump with the Space key', async ({ page }) => {
+    await page.goto('/');
+    await page.evaluate(() => window.scrollTo(0, document.getElementById('projetos')!.offsetTop));
+    await expect(page.locator('.idx')).toHaveCSS('opacity', '1');
+    await page.locator('.idx', { hasText: '04' }).getByText('04').focus();
+    await page.keyboard.press('Space');
+    await expect(page.locator('#contato')).toBeInViewport({ timeout: 6000 });
+  });
 });
