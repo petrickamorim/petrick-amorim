@@ -211,6 +211,20 @@ test.describe('project screenshots', () => {
       await expect(img).toHaveAttribute('decoding', 'async');
     }
   });
+
+  test('offer AVIF and WebP before the JPEG fallback', async ({ page }) => {
+    await gotoList(page);
+    for (const kind of ['desk', 'phone']) {
+      const picture = page.locator(`#projetos .devices .${kind} picture`);
+      await expect(picture.locator('source[type="image/avif"]')).toHaveAttribute('srcset', /.avif$/);
+      await expect(picture.locator('source[type="image/webp"]')).toHaveAttribute('srcset', /.webp$/);
+      await expect(picture.locator('img')).toHaveAttribute('src', /.jpg$/);
+    }
+    await page.locator('#projetos .row').first().locator('.rh').click();
+    // the phone is visible on every viewport, so its lazy image always loads
+    const phone = page.locator('#projetos .devices .phone img');
+    await expect.poll(() => phone.evaluate((el: HTMLImageElement) => el.currentSrc)).toMatch(/.avif$/);
+  });
 });
 
 test.describe('scroll triggers after a panel grows', () => {

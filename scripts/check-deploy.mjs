@@ -16,6 +16,15 @@ const checks = {
       assert.ok(size < 200 * 1024, `${file} is ${Math.round(size / 1024)}KB`);
     }
   },
+  'project screenshots ship lighter AVIF and WebP versions of each JPEG': () => {
+    for (const base of ['ju-desk', 'ju-mob']) {
+      const jpg = statSync(`public/projects/${base}.jpg`).size;
+      for (const ext of ['avif', 'webp']) {
+        const size = statSync(`public/projects/${base}.${ext}`).size;
+        assert.ok(size < jpg, `${base}.${ext} (${Math.round(size / 1024)}KB) is not lighter than the JPEG (${Math.round(jpg / 1024)}KB)`);
+      }
+    }
+  },
 };
 
 let failed = 0;
