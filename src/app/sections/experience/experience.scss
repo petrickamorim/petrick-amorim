@@ -1,0 +1,37 @@
+:host { display: block; max-width: 1240px; margin: 0 auto; padding: 16vh 48px 8vh; }
+
+.tl { position: relative; padding-left: 56px; }
+.rail2 { position: absolute; left: 6px; top: 0; bottom: 0; width: 1px; background: #1e1e1e; }
+.fill { position: absolute; left: 6px; top: 0; width: 1px; height: 100%; background: linear-gradient(var(--purple), #fff); transform-origin: top; transform: scaleY(0); }
+.item { margin-bottom: 12vh; position: relative; opacity: 0.12; transition: opacity 0.6s; }
+.item:last-child { margin-bottom: 0; }
+.item.on { opacity: 1; }
+.item::before {
+  content: ''; position: absolute; left: -55px; top: 10px; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg); border: 1px solid #444;
+  transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+.item.on::before { background: var(--purple); border-color: var(--purple); box-shadow: 0 0 16px var(--purple); }
+.item.now::after { content: ''; position: absolute; left: -60px; top: 5px; width: 21px; height: 21px; border-radius: 50%; border: 1px solid var(--purple); opacity: 0; }
+.item.now.on::after { animation: ring 2s infinite; }
+@keyframes ring { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(1.8); opacity: 0; } }
+.when { font: 500 12px var(--mono); color: var(--mut); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.badge { color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 20px; padding: 2px 9px; font-size: 10px; letter-spacing: 0.08em; }
+h3 { font: 800 clamp(28px, 3.4vw, 42px) var(--sans); letter-spacing: -0.03em; margin: 8px 0 2px; }
+.role { font: 14px var(--mono); color: #ccc; }
+.role span { color: #666; }
+.role .bnp { color: #fff; font-weight: 700; font-size: 1.12em; }
+.hl { list-style: none; margin-top: 22px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 40px; max-width: 960px; }
+.hl li { color: #b5b5b5; line-height: 1.6; font-size: 15px; padding-left: 18px; position: relative; }
+.hl li::before { content: '—'; position: absolute; left: 0; color: #444; }
+:host ::ng-deep .hl b { color: var(--fg); font-weight: 600; }
+.tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags span { font: 11px var(--mono); color: #999; border: 1px solid #242424; border-radius: 20px; padding: 5px 11px; }
+
+@media (max-width: 759px) {
+  :host { padding: 12vh 16px 6vh; }
+  .hl { grid-template-columns: 1fr; }
+  .tl { padding-left: 36px; }
+  .item::before { left: -35px; }
+  .item.now::after { left: -40px; }
+}

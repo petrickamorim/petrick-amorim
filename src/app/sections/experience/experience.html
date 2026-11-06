@@ -1,0 +1,43 @@
+<div class="sh"><span>{{ lang.t(copy.expTitle) }}</span><span class="dot">.</span></div>
+<div class="shs">{{ lang.t(copy.expHint) }}</div>
+<div class="tl" #tl>
+  <div class="rail2"></div>
+  <div class="fill" #fill></div>
+  @for (it of items; track it.id) {
+    <div class="item" [class.now]="it.current">
+      <div class="when">
+        <span>{{ lang.t(it.period) }}</span>
+        @if (it.current) {
+          <span class="badge">{{ lang.t(copy.current) }}</span>
+        }
+        @if (it.place) {
+          <span>· {{ lang.t(it.place) }}</span>
+        }
+      </div>
+      <h3>{{ it.org }}</h3>
+      <div class="role">
+        {{ lang.t(it.role) }}
+        @if (it.roleSuffix) {
+          {{ ' ' }}<span>· {{ it.roleSuffix }}</span>
+        }
+        @if (it.highlight) {
+          {{ ' ' }}<span>·</span>{{ ' ' }}<strong class="bnp">{{ it.highlight }}</strong>
+        }
+      </div>
+      @if (it.bullets.length) {
+        <ul class="hl">
+          @for (b of it.bullets; track $index) {
+            <li [innerHTML]="lang.t(b)"></li>
+          }
+        </ul>
+      }
+      @if (it.tags.length) {
+        <div class="tags">
+          @for (tag of it.tags; track tag) {
+            <span>{{ tag }}</span>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>
