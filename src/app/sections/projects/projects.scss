@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16vh 48px 8vh;
+}
+.list {
+  position: relative;
+}
+.scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  top: 0;
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
+  box-shadow: 0 0 14px 2px rgba(168, 85, 247, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+@media (max-width: 760px) {
+  :host {
+    padding: 12vh 16px 6vh;
+  }
+}

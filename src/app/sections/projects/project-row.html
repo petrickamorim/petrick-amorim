@@ -1,0 +1,20 @@
+<div
+  #head
+  class="rh"
+  role="button"
+  tabindex="0"
+  [attr.aria-expanded]="open()"
+  (mouseenter)="decodeTitle(420)"
+  (click)="toggle.emit()"
+  (keydown.enter)="toggle.emit()"
+  (keydown.space)="$event.preventDefault(); toggle.emit()"
+>
+  <span class="n">{{ no }}</span>
+  <span #title class="t">{{ project().title }}</span>
+  <span class="g">{{ project().stackShort }}</span>
+  <app-live-signal [status]="project().status" />
+  <span class="ar">+</span>
+</div>
+<div class="rb" [attr.inert]="open() ? null : ''" (transitionend)="onTransitionEnd($event)">
+  <div><app-project-panel [project]="project()" [open]="open()" /></div>
+</div>

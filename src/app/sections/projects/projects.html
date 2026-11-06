@@ -1,0 +1,8 @@
+<div class="sh"><span>{{ lang.t(copy.projectsTitle) }}</span><span class="dot">.</span></div>
+<div class="shs">{{ lang.t(copy.projectsHint) }}</div>
+<div #list class="list">
+  @for (p of projects; track p.slug) {
+    <app-project-row [project]="p" [open]="openSlug() === p.slug" (toggle)="toggle(p.slug)" />
+  }
+  <div #scan class="scan"></div>
+</div>

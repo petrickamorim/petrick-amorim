@@ -1,0 +1,109 @@
+:host {
+  display: block;
+  border-top: 1px solid #1d1d1d;
+  position: relative;
+  scroll-margin-top: 64px;
+}
+:host(:last-of-type) {
+  border-bottom: 1px solid #1d1d1d;
+}
+.rh {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50px 1fr auto auto 40px;
+  align-items: center;
+  gap: 22px;
+  padding: 26px 14px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.rh > * {
+  position: relative;
+  z-index: 1;
+}
+.rh::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.16), rgba(168, 85, 247, 0.02));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+  z-index: 0;
+}
+.rh:hover::before,
+:host(.open) .rh::before {
+  transform: scaleX(1);
+}
+.n {
+  font: 12px var(--mono);
+  color: #555;
+}
+.t {
+  font: 700 clamp(26px, 3.6vw, 46px) var(--mono);
+  color: transparent;
+  -webkit-text-stroke: 1px #9a9a9a;
+  white-space: nowrap;
+  transition: color 0.35s, -webkit-text-stroke-color 0.35s, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.rh:hover .t,
+:host(.open) .t {
+  transform: translateX(18px);
+  color: var(--fg);
+  -webkit-text-stroke-color: var(--fg);
+}
+.g {
+  font: 12px var(--mono);
+  color: #666;
+  text-align: right;
+}
+.ar {
+  font: 20px var(--mono);
+  color: #555;
+  text-align: center;
+  transition: transform 0.4s, color 0.3s;
+}
+.rh:hover .ar {
+  color: var(--purple);
+}
+:host(.open) .ar {
+  transform: rotate(45deg);
+  color: var(--purple);
+}
+.rb {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+:host(.open) .rb {
+  grid-template-rows: 1fr;
+}
+.rb > div {
+  overflow: hidden;
+}
+@media (max-width: 760px) {
+  .rh {
+    grid-template-columns: 28px 1fr 30px;
+    gap: 10px;
+    padding: 20px 4px;
+  }
+  .g {
+    display: none;
+  }
+  app-live-signal {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: -6px;
+  }
+  .ar {
+    grid-row: 1;
+    grid-column: 3;
+  }
+  .t {
+    font-size: 26px;
+  }
+  .rh:hover .t,
+  :host(.open) .t {
+    transform: none;
+  }
+}
