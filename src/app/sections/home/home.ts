@@ -37,6 +37,7 @@ export class Home {
   private readonly ambient = viewChild.required<ElementRef<HTMLDivElement>>('ambient');
   private readonly hello = viewChild.required<ElementRef<HTMLElement>>('hello');
   private readonly name = viewChild.required<ElementRef<HTMLElement>>('name');
+  private helloStarted = false;
   private introDone = false;
   private particles?: Container;
 
@@ -44,9 +45,11 @@ export class Home {
     const destroyRef = inject(DestroyRef);
     const host = inject(ElementRef<HTMLElement>).nativeElement as HTMLElement;
 
+    // A switch mid-intro cancels the running hello decode with the final text; afterwards it re-decodes briefly.
     effect(() => {
       const text = this.lang.t(COPY.hello);
-      if (this.introDone) decodeInto(this.hello().nativeElement, text, 350, { reducedMotion: prefersReducedMotion() });
+      if (!this.helloStarted) return;
+      decodeInto(this.hello().nativeElement, text, this.introDone ? 350 : 0, { reducedMotion: prefersReducedMotion() });
     });
 
     afterNextRender(() => {
@@ -92,11 +95,10 @@ export class Home {
 
   private async intro(reduced: boolean): Promise<void> {
     await document.fonts.ready;
+    this.helloStarted = true;
     await decodeInto(this.hello().nativeElement, this.lang.t(COPY.hello), 700, { reducedMotion: reduced });
     await decodeInto(this.name().nativeElement, NAME, 1600, { reducedMotion: reduced });
     this.introDone = true;
-    // the language may have changed while decoding
-    this.hello().nativeElement.textContent = this.lang.t(COPY.hello);
     this.iconsOn.set(true);
   }
 
