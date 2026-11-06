@@ -1,0 +1,27 @@
+:root {
+  --bg: #050505;
+  --fg: #f2f2f2;
+  --mut: #8a8a8a;
+  --purple: #a855f7;
+  --green: #22c55e;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --sans: Inter, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
