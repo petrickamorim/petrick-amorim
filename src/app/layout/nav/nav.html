@@ -1,0 +1,11 @@
+<nav class="nav" [class.show]="showIndex()">
+  <div class="idx">
+    @for (s of sections; track s.id) {
+      <a role="button" tabindex="0" [class.on]="active() === s.id" (click)="go(s.id)" (keydown.enter)="go(s.id)">{{ s.label }}</a>
+    }
+  </div>
+  <div class="lang">
+    <button type="button" [class.on]="lang.lang() === 'pt'" (click)="setLang('pt')">PT</button>
+    <button type="button" [class.on]="lang.lang() === 'en'" (click)="setLang('en')">EN</button>
+  </div>
+</nav>
