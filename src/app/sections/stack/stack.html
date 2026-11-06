@@ -1,0 +1,18 @@
+<div class="glow"></div>
+<div class="bigt">{{ lang.t(copy.stackTitle) }}</div>
+<div class="scene">
+  <div class="rig">
+    @for (layer of layers; track layer.no) {
+      <div class="plate"><div class="gridl"></div></div>
+    }
+    <div class="pulse"></div>
+  </div>
+</div>
+<div class="labs">
+  @for (layer of layers; track layer.no) {
+    <div class="lab">
+      <span class="n">0{{ layer.no }}</span>
+      <div><h4></h4><p></p></div>
+    </div>
+  }
+</div>

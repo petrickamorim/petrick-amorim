@@ -1,0 +1,20 @@
+:host { display: block; height: 100vh; position: relative; overflow: hidden; }
+.glow { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 28px; background: radial-gradient(closest-side, rgba(255, 255, 255, .07), transparent); width: 55%; height: 60%; }
+.bigt { position: absolute; inset: 0; display: grid; place-items: center; font: 800 clamp(44px, 8vw, 120px) var(--sans); letter-spacing: -.045em; white-space: nowrap; text-align: center; }
+.scene { position: absolute; left: 40%; top: 52%; width: 0; height: 0; perspective: 1400px; }
+.rig { position: absolute; transform-style: preserve-3d; transform: rotateX(58deg) rotateZ(-38deg); opacity: 0; }
+.plate { position: absolute; width: 320px; height: 210px; left: -160px; top: -105px; border: 1px solid rgba(255, 255, 255, .35); border-radius: 14px; background: linear-gradient(135deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .01)); transition: border-color .2s, box-shadow .2s; }
+.plate.hot { border-color: var(--purple); box-shadow: 0 0 50px rgba(168, 85, 247, .35), inset 0 0 30px rgba(168, 85, 247, .12); }
+.gridl { position: absolute; inset: 14px; border-radius: 8px; background-image: linear-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .06) 1px, transparent 1px); background-size: 20px 20px; }
+.pulse { position: absolute; width: 8px; height: 8px; margin: -4px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 20px 6px rgba(168, 85, 247, .6); opacity: 0; }
+.labs { position: absolute; inset: 0; pointer-events: none; }
+.lab { position: absolute; left: 63%; display: flex; gap: 18px; align-items: baseline; opacity: 0; }
+.n { font: 500 11px var(--mono); color: #555; }
+h4 { margin: 0; font: 700 clamp(17px, 1.7vw, 23px) var(--sans); letter-spacing: -.02em; }
+p { margin: 4px 0 0; font: 12px var(--mono); color: var(--mut); }
+
+@media (max-width: 759px) {
+  .scene { left: 50%; top: 36%; }
+  .lab { left: 16px; right: 16px; }
+  .plate { width: 220px; height: 145px; left: -110px; top: -72px; }
+}
