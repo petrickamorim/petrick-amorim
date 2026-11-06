@@ -1,0 +1,150 @@
+:host {
+  display: block;
+}
+.boot {
+  margin: 4px 14px 0;
+  height: 1px;
+  background: #1d1d1d;
+  position: relative;
+  overflow: hidden;
+}
+.boot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--purple);
+  box-shadow: 0 0 10px var(--purple);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+:host(.open) .boot::after {
+  animation: boot 0.9s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+@keyframes boot {
+  to {
+    transform: scaleX(1);
+  }
+}
+.bootl {
+  font: 12px var(--mono);
+  color: var(--purple);
+  padding: 12px 14px 0;
+  height: 30px;
+}
+.open-in {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 34px;
+  padding: 14px 14px 40px;
+}
+.stg {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+:host(.ready) .stg {
+  opacity: 1;
+  transform: none;
+}
+.big {
+  font: 800 clamp(30px, 3vw, 40px) var(--sans);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.kick {
+  font: 12px var(--mono);
+  color: var(--purple);
+  margin-bottom: 10px;
+}
+.beats {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.beat {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 14px;
+}
+.beat .k {
+  font: 11px var(--mono);
+  color: #555;
+  padding-top: 3px;
+  letter-spacing: 0.06em;
+}
+.beat p {
+  color: #c4c4c4;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.nums {
+  display: flex;
+  gap: 26px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #1a1a1a;
+}
+.num b {
+  font: 800 30px var(--sans);
+  letter-spacing: -0.03em;
+  display: block;
+}
+.num span {
+  font: 11px var(--mono);
+  color: var(--mut);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.chip {
+  font: 11px var(--mono);
+  color: #bbb;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 5px 11px;
+}
+.chip::before {
+  content: attr(data-l);
+  color: var(--purple);
+  margin-right: 6px;
+}
+.links {
+  display: flex;
+  gap: 18px;
+  margin-top: 22px;
+  font: 12px var(--mono);
+}
+.links a {
+  text-decoration: none;
+  border-bottom: 1px solid #444;
+  padding-bottom: 2px;
+}
+.links a:hover {
+  color: var(--purple);
+  border-color: var(--purple);
+}
+@media (max-width: 760px) {
+  .open-in {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 10px 4px 30px;
+  }
+  .beat {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .nums {
+    gap: 18px;
+  }
+  .num b {
+    font-size: 24px;
+  }
+  .bootl {
+    font-size: 11px;
+    padding: 10px 4px 0;
+  }
+}

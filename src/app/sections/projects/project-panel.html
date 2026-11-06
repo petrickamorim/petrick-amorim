@@ -1,0 +1,40 @@
+<div class="boot"></div>
+<div #boot class="bootl"></div>
+<div class="open-in">
+  @if (api(); as a) {
+    <app-api-console class="stg" [project]="a" />
+  }
+  @if (site(); as s) {
+    <app-site-preview class="stg" [project]="s" />
+  }
+  <div class="story">
+    <div class="kick stg">{{ lang.t(project().kicker) }}</div>
+    <div #big class="big stg">{{ project().fullTitle }}</div>
+    <div class="beats">
+      @for (b of beats(); track $index) {
+        <div class="beat stg" [style.transition-delay]="0.15 + $index * 0.12 + 's'">
+          <span class="k">{{ lang.t(b.k) }}</span>
+          <p>{{ lang.t(b.text) }}</p>
+        </div>
+      }
+    </div>
+    <div class="nums stg" style="transition-delay: 0.55s">
+      @for (m of project().metrics; track $index) {
+        <div class="num">
+          <b #metric>{{ m.value }}</b>
+          <span>{{ lang.t(m.label) }}</span>
+        </div>
+      }
+    </div>
+    <div class="chips stg" style="transition-delay: 0.65s">
+      @for (t of project().tags; track $index) {
+        <span class="chip" [attr.data-l]="'0' + t.layer">{{ t.name }}</span>
+      }
+    </div>
+    <div class="links stg" style="transition-delay: 0.75s">
+      @for (l of project().links; track l.href) {
+        <a [href]="l.href" target="_blank" rel="noopener">{{ l.label }} ↗</a>
+      }
+    </div>
+  </div>
+</div>
