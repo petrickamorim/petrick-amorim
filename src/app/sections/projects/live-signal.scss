@@ -1,0 +1,40 @@
+:host {
+  font: 11px var(--mono);
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  min-width: 150px;
+  justify-content: flex-end;
+}
+i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pul 1.8s infinite;
+}
+b {
+  font-weight: 500;
+  color: #aaa;
+}
+@keyframes pul {
+  50% {
+    opacity: 0.25;
+  }
+}
+.spark {
+  width: 70px;
+  height: 18px;
+}
+@media (max-width: 760px) {
+  :host {
+    justify-content: flex-start;
+    min-width: 0;
+  }
+  .spark {
+    display: none;
+  }
+}
